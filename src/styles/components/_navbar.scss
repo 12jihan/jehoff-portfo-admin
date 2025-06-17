@@ -80,18 +80,40 @@
 .side-nav {
   position: relative;
   height: 3.5em;
-  padding: 0 1.5em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   background-color: color("primary");
-  border-bottom: 1px solid color("light");
+  border-right: 1px solid color("light");
 
   &__group {
     height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+  }
+
+  &__item {
+    color: color("light");
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    text-decoration: none;
+    transition: all 150ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: color("primary");
+      background-color: color("light");
+    }
+  }
+
+  &--active {
+    color: color("primary");
+    background-color: color("light");
+    text-decoration: none;
   }
 
   &__mobile-group {
@@ -126,27 +148,5 @@
       color: color("secondary");
       background-color: color("lime");
     }
-  }
-
-  &__item {
-    color: color("light");
-    text-decoration: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    text-decoration: none;
-    transition: all 150ms ease-in-out;
-
-    &:hover {
-      color: color("primary");
-      background-color: color("light");
-    }
-  }
-
-  &--active {
-    color: color("primary");
-    background-color: color("light");
-    text-decoration: none;
   }
 }
