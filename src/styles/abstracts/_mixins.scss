@@ -1,0 +1,55 @@
+@use "variables" as *;
+@use "functions" as *;
+@use "sass:map";
+
+// Media Queries
+@mixin mq($breakpoint, $direction: "up") {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @if $direction == "down" {
+      @media (max-width: map.get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    } @else {
+      @media (min-width: map.get($breakpoints, $breakpoint)) {
+        @content;
+      }
+    }
+  }
+}
+
+// Flexbox
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+// Grid
+@mixin grid($columns: 1, $gap: $grid-gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Container
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  padding-inline: map.get($spacing, "4");
+  margin-inline: auto;
+}
+
+@mixin button {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  padding: spacing("2") spacing("4");
+  border: none;
+  font-size: font-size("base");
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+}

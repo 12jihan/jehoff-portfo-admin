@@ -22,22 +22,6 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/resume",
-        element: <Resume />,
-      },
-      {
-        path: "/projects",
-        element: <Projects />,
-      },
-      {
-        path: "/blog",
-        element: <Blog />,
-      },
-      {
-        path: "/contact",
-        element: <ContactPage />,
-      },
     ],
   },
 ]);
