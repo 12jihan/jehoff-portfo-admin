@@ -3,6 +3,21 @@
 @use "components";
 @use "layouts";
 
+.main-content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  aside {
+    width: auto;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 #root {
   display: flex;
   flex-direction: column;
