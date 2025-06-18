@@ -1,3 +1,5 @@
+import type { Timestamp } from "firebase/firestore";
+
 export interface IContactFormData {
   name: string;
   email: string;
@@ -6,6 +8,17 @@ export interface IContactFormData {
   status: "unread" | "read" | "replied";
   dateCreated: Date;
   dateModified: Date;
+}
+
+export interface IContactData {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  contact: boolean;
+  status: "unread" | "read" | "replied";
+  dateCreated: Timestamp;
+  dateModified: Timestamp;
   // subject: string;
   // phone?: string;
 }
