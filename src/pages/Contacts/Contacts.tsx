@@ -8,8 +8,8 @@ import type { Timestamp } from "firebase/firestore";
 function Contacts(): ReactElement {
   const { isLoading, error, success, contacts, getAllContacts } =
     useContactData();
-  const tableRef = useRef(null);
 
+  const tableRef = useRef<HTMLElement>(null);
   const gridRef = useRef<Grid | null>(null);
 
   useEffect(() => {
@@ -17,8 +17,82 @@ function Contacts(): ReactElement {
   }, []);
 
   useEffect(() => {
+    if (contacts && contacts.length > 0 && tableRef.current) {
+      if (gridRef.current) {
+        gridRef.current.destroy();
+      }
+
+      // Trnasform contacts data for Grid.js
+      const gridData = contacts.map((contact: IContactData) => [
+        contact.id,
+        contact.name,
+        contact.email,
+        convertTimestamp(contact.dateCreated),
+        convertTimestamp(contact.dateModified),
+      ]);
+
+      // Create new Grid instance
+      gridRef.current = new Grid({
+        columns: ["ID", "Name", "Email", "Date Created", "Date Modified"],
+        data: gridData,
+        search: true,
+        sort: true,
+        pagination: false,
+        style: {
+          table: {
+            border: "1px solid #ccc",
+          },
+          th: {
+            "background-color": "#f8f9fa",
+            color: "#333",
+            "border-bottom": "2px solid #dee2e6",
+            padding: "12px",
+          },
+          td: {
+            padding: "8px 12px",
+            "border-bottom": "1px solid #dee2e6",
+          },
+        },
+        className: {
+          container: "grid-container",
+          table: "grid-table",
+          thead: "grid-thead",
+          tbody: "grid-tbody",
+          th: "grid-th",
+          td: "grid-td",
+        },
+      });
+
+      // Render the grid
+      gridRef.current.render(tableRef.current as Element);
+    }
     console.log("contacts", contacts);
   }, [contacts]);
+
+  useEffect(() => {
+    return () => {
+      if (gridRef.current) {
+        gridRef.current.destroy();
+      }
+    };
+  }, []);
+
+  function convertTimestamp(timestamp: Timestamp): any {
+    const newDate = timestamp.toDate().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    return newDate;
+  }
+
+  function clicked(): void {
+    console.log("clicked");
+  }
 
   return (
     <>
@@ -39,28 +113,13 @@ function Contacts(): ReactElement {
               Archived
             </button>
           </div>
+          {isLoading && <div>Loading contacts...</div>}
+          {error && <div>Error: {error}</div>}
           <div ref={tableRef}></div>
         </div>
       </section>
     </>
   );
-
-  function convertTimestamp(timestamp: Timestamp): any {
-    const newDate = timestamp.toDate().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-
-    return newDate;
-  }
-
-  function clicked(): void {
-    console.log("clicked");
-  }
 }
 
 export default Contacts;
