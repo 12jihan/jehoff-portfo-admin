@@ -10,7 +10,7 @@ const routes = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Navbar />
+        {/* <Navbar /> */}
         <div
           className="
           main-content"
@@ -22,7 +22,7 @@ const routes = createBrowserRouter([
             <Outlet />
           </main>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </>
     ),
     children: [

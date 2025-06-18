@@ -1,0 +1,16 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+
+.selector {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: spacing("5");
+  padding: spacing("5");
+  border: 1px solid color("light");
+  border-radius: 5px;
+}

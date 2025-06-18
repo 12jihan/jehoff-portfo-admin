@@ -17,6 +17,16 @@ button {
   z-index: 101;
 }
 
+.btn__group-h {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: spacing("5");
+  z-index: 101;
+}
+
 .btn {
   @include button;
   // display: flex;
@@ -95,6 +105,25 @@ button {
     &:hover {
       color: black;
       background-color: color("lime");
+    }
+  }
+
+  // light
+  &--light {
+    color: black;
+    background-color: color("light");
+    &:hover {
+      background-color: brighter("light", 5);
+    }
+  }
+  &--light-outline {
+    color: color("light");
+    background-color: transparent;
+    border: 1px solid color("light");
+
+    &:hover {
+      color: black;
+      background-color: color("light");
     }
   }
 }

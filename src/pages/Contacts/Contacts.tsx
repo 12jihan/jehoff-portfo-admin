@@ -19,23 +19,61 @@ function Contacts(): ReactElement {
   return (
     <>
       <section className="container">
-        <h2 className="section-header-center">Coming Soon...</h2>
+        <h2 className="section-header-center">Contacts</h2>
         <div className="section-body-center">
-          <div className="contacts-table-container">
-            {contacts &&
-              contacts.map(
-                (item: IContactData, index: number): ReactElement => (
-                  <div className="contact-item" key={index}>
-                    <p>{item.id}</p>
-                    <p>{item.name}</p>
-                    <p>{item.email}</p>
-                    <p>{item.message}</p>
-                    <p>{convertTimestamp(item.dateCreated)}</p>
-                    <p>{convertTimestamp(item.dateModified)}</p>
-                  </div>
-                ),
-              )}
+          <div className="selector btn__group">
+            <button className="btn btn--light-outline" type="button">
+              View All
+            </button>
+            <button className="btn btn--light-outline" type="button">
+              Unread
+            </button>
+            <button className="btn btn--light-outline" type="button">
+              Recently Updated
+            </button>
+            <button className="btn btn--light-outline" type="button">
+              Archived
+            </button>
           </div>
+
+          <table className="table-scrollable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+              </tr>
+            </thead>
+            <tbody>
+              {contacts &&
+                contacts.map(
+                  (item: IContactData, index: number): ReactElement => (
+                    <tr className="" key={index} onClick={clicked}>
+                      <td>
+                        <p>{item.id}</p>
+                      </td>
+                      <td>
+                        <p>{item.name}</p>
+                      </td>
+                      <td>
+                        <p>{item.email}</p>
+                      </td>
+                      <td>
+                        <p>{convertTimestamp(item.dateCreated)}</p>
+                      </td>
+                      <td>
+                        <p>{convertTimestamp(item.dateModified)}</p>
+                      </td>
+                      {/* <td> */}
+                      {/*   <p>{item.message}</p> */}
+                      {/* </td> */}
+                    </tr>
+                  ),
+                )}
+            </tbody>
+          </table>
         </div>
       </section>
     </>
@@ -44,7 +82,7 @@ function Contacts(): ReactElement {
   function convertTimestamp(timestamp: Timestamp): any {
     const newDate = timestamp.toDate().toLocaleDateString("en-US", {
       year: "numeric",
-      month: "short",
+      month: "numeric",
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
@@ -52,6 +90,9 @@ function Contacts(): ReactElement {
     });
 
     return newDate;
+  }
+  function clicked(): void {
+    console.log("clicked");
   }
 }
 
