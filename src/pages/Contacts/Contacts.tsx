@@ -1,12 +1,16 @@
-import { useEffect, type ReactElement } from "react";
-import { NavLink } from "react-router";
+import { useEffect, useRef, type ReactElement } from "react";
 import { useContactData } from "../../customHooks/ContactData";
+import { Grid } from "gridjs";
+
 import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
 import type { Timestamp } from "firebase/firestore";
 
 function Contacts(): ReactElement {
   const { isLoading, error, success, contacts, getAllContacts } =
     useContactData();
+  const tableRef = useRef(null);
+
+  const gridRef = useRef<Grid | null>(null);
 
   useEffect(() => {
     getAllContacts();
@@ -35,45 +39,7 @@ function Contacts(): ReactElement {
               Archived
             </button>
           </div>
-
-          <table className="table-scrollable">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Date Created</th>
-                <th>Date Modified</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contacts &&
-                contacts.map(
-                  (item: IContactData, index: number): ReactElement => (
-                    <tr className="" key={index} onClick={clicked}>
-                      <td>
-                        <p>{item.id}</p>
-                      </td>
-                      <td>
-                        <p>{item.name}</p>
-                      </td>
-                      <td>
-                        <p>{item.email}</p>
-                      </td>
-                      <td>
-                        <p>{convertTimestamp(item.dateCreated)}</p>
-                      </td>
-                      <td>
-                        <p>{convertTimestamp(item.dateModified)}</p>
-                      </td>
-                      {/* <td> */}
-                      {/*   <p>{item.message}</p> */}
-                      {/* </td> */}
-                    </tr>
-                  ),
-                )}
-            </tbody>
-          </table>
+          <div ref={tableRef}></div>
         </div>
       </section>
     </>
@@ -91,6 +57,7 @@ function Contacts(): ReactElement {
 
     return newDate;
   }
+
   function clicked(): void {
     console.log("clicked");
   }

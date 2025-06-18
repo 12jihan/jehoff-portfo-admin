@@ -8,17 +8,30 @@
   width: 100%;
   border: 1px solid color("light");
   border-radius: 5px;
+  display: block; /* Add this */
+  max-height: 30rem; /* Move height here and use max-height */
+  overflow: hidden; /* Add this */
 
   tbody {
-    display: block;
+    display: block; /* Add this */
     height: 30rem;
-    overflow-y: scroll;
+    overflow-y: auto; /* Add this for scrolling */
+  }
+
+  thead {
+    display: table-header-group; /* Add this to keep header visible */
+    position: sticky; /* Add this */
+    top: 0; /* Add this */
+    z-index: 10; /* Add this */
+    background-color: color("background"); /* Add background */
   }
 
   tr {
+    display: table; /* Add this */
+    width: 100%; /* Add this */
+    table-layout: fixed; /* Add this */
     border-spacing: 0;
     text-align: center;
-    border-collapse: collapse;
     height: 5rem;
     cursor: pointer;
     border-bottom: 1px solid color("light");
@@ -27,10 +40,11 @@
       color: color("primary");
       background-color: color("light");
     }
-    // padding: spacing("4");
-    // border-bottom: 1px solid color("light");
-    // &:last-child {
-    //   border: none;
-    // }
+  }
+
+  td,
+  th {
+    border: none; /* Remove cell borders */
+    padding: 0.5rem; /* Add padding for spacing */
   }
 }
