@@ -79,7 +79,7 @@
 
 .side-nav {
   position: relative;
-  height: 3.5em;
+  height: calc(100vh - 7rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,21 +88,29 @@
 
   &__group {
     height: auto;
+    width: 100%;
+    width: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  .bottom {
+    border-top: 1px solid color("light");
+  }
 
   &__item {
     color: color("light");
+    font-size: 1.2rem;
     text-decoration: none;
-    height: 100%;
+    width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 0 1rem;
+    padding: 1rem 0;
     text-decoration: none;
     transition: all 150ms ease-in-out;
     cursor: pointer;
+    border-bottom: 1px solid color("light");
 
     &:hover {
       color: color("primary");

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { collection, Timestamp, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-import {
+import type {
   IContactFormInput,
   IUseContactFormReturn,
 } from "../interfaces/ContactForm/IContactForm";
