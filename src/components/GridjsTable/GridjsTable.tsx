@@ -5,10 +5,9 @@ import { Grid } from "gridjs";
 import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
 import type { Timestamp } from "firebase/firestore";
 import "gridjs/dist/theme/mermaid.css";
-import GridjsTable from "../../components/GridjsTable/GridjsTable";
-import ShadcnTable from "../../components/ShadcnTable/ShadcnTable";
+import "./GridjsTable.scss";
 
-function Contacts(): ReactElement {
+function GridjsTable(): ReactElement {
   const { isLoading, error, contacts, getAllContacts } = useContactData();
 
   const tableRef = useRef<HTMLDivElement>(null);
@@ -100,36 +99,13 @@ function Contacts(): ReactElement {
     return newDate;
   }
 
-  function clicked(): void {
-    console.log("clicked");
-  }
-
   return (
     <>
-      <section className="container">
-        <h2 className="section-header-center">Contacts</h2>
-        <div className="section-body-center">
-          <div className="selector btn__group">
-            <button className="btn btn--light-outline" type="button">
-              View All
-            </button>
-            <button className="btn btn--light-outline" type="button">
-              Unread
-            </button>
-            <button className="btn btn--light-outline" type="button">
-              Recently Updated
-            </button>
-            <button className="btn btn--light-outline" type="button">
-              Archived
-            </button>
-          </div>
-
-          <GridjsTable />
-          {/* <ShadcnTable /> */}
-        </div>
-      </section>
+      {isLoading && <div>Loading contacts...</div>}
+      {error && <div>Error: {error}</div>}
+      <div className="grid-js-container" ref={tableRef}></div>
     </>
   );
 }
 
-export default Contacts;
+export default GridjsTable;

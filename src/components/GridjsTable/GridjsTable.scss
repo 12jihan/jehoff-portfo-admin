@@ -1,0 +1,33 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/functions" as *;
+@use "../../styles/abstracts/mixins" as *;
+@use "sass:color";
+
+.grid-container {
+  border: 1px solid color("light");
+  // background-color: 1px solid color("light");
+  border-radius: 5px;
+}
+
+.grid-tbody {
+  background-color: transparent !important;
+}
+
+.grid-th {
+  // background-color: transparent !important;
+  border-radius: 0;
+}
+
+.gridjs-wrapper {
+  border-radius: 0;
+}
+
+.gridjs-tr {
+  cursor: pointer;
+  &:hover {
+    td {
+      color: color("primary") !important;
+    }
+    background-color: color("light");
+  }
+}
