@@ -6,10 +6,9 @@ import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo"
 import type { Timestamp } from "firebase/firestore";
 
 function Contacts(): ReactElement {
-  const { isLoading, error, success, contacts, getAllContacts } =
-    useContactData();
+  const { isLoading, error, contacts, getAllContacts } = useContactData();
 
-  const tableRef = useRef<HTMLElement>(null);
+  const tableRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<Grid | null>(null);
 
   useEffect(() => {
@@ -35,27 +34,11 @@ function Contacts(): ReactElement {
       gridRef.current = new Grid({
         columns: ["ID", "Name", "Email", "Date Created", "Date Modified"],
         data: gridData,
-        search: true,
+        search: false,
         sort: true,
         pagination: false,
-        style: {
-          table: {
-            border: "1px solid #ccc",
-          },
-          th: {
-            "background-color": "#f8f9fa",
-            color: "#333",
-            "border-bottom": "2px solid #dee2e6",
-            padding: "12px",
-          },
-          td: {
-            padding: "8px 12px",
-            "border-bottom": "1px solid #dee2e6",
-          },
-        },
         className: {
-          container: "grid-container",
-          table: "grid-table",
+          table: "table-scrollable",
           thead: "grid-thead",
           tbody: "grid-tbody",
           th: "grid-th",
@@ -64,7 +47,7 @@ function Contacts(): ReactElement {
       });
 
       // Render the grid
-      gridRef.current.render(tableRef.current as Element);
+      gridRef.current.render(tableRef.current);
     }
     console.log("contacts", contacts);
   }, [contacts]);
@@ -113,6 +96,7 @@ function Contacts(): ReactElement {
               Archived
             </button>
           </div>
+
           {isLoading && <div>Loading contacts...</div>}
           {error && <div>Error: {error}</div>}
           <div ref={tableRef}></div>
