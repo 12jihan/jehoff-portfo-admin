@@ -4,6 +4,7 @@ import { Grid } from "gridjs";
 
 import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
 import type { Timestamp } from "firebase/firestore";
+import "gridjs/dist/theme/mermaid.css";
 
 function Contacts(): ReactElement {
   const { isLoading, error, contacts, getAllContacts } = useContactData();
@@ -26,25 +27,47 @@ function Contacts(): ReactElement {
         contact.id,
         contact.name,
         contact.email,
-        convertTimestamp(contact.dateCreated),
-        convertTimestamp(contact.dateModified),
+        // convertTimestamp(contact.dateCreated),
+        // convertTimestamp(contact.dateModified),
       ]);
-
+      console.log("grid data", gridData);
       // Create new Grid instance
       gridRef.current = new Grid({
-        columns: ["ID", "Name", "Email", "Date Created", "Date Modified"],
+        columns: ["ID", "Name", "Email"],
         data: gridData,
         search: false,
         sort: false,
         pagination: false,
         resizable: true,
+        height: "400px",
+        fixedHeader: true,
         className: {
-          container: "grid-js-container",
+          container: "grid-container",
           table: "table-scrollable",
           thead: "grid-thead",
           tbody: "grid-tbody",
           th: "grid-th",
           td: "grid-td",
+        },
+        style: {
+          container: {
+            "background-color": "transparent",
+            // border: "1px solid #f8f9fa",
+          },
+          table: {
+            "background-color": "transparent",
+            // "table-layout": "fixed",
+          },
+          th: {
+            // "background-color": "transparent",
+            // color: "#f8f9fa",
+          },
+          td: {
+            // "background-color": "transparent",
+            // color: "#f8f9fa",
+            // padding: "8px 12px",
+            // "border-bottom": "1px solid #dee2e6",
+          },
         },
       });
 

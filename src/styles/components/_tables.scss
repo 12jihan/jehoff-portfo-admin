@@ -3,52 +3,21 @@
 @use "../abstracts/mixins" as *;
 @use "sass:color";
 
-.grid-js-container {
-  width: 100%;
+.grid-container {
+  border: 1px solid color("light");
+  // background-color: 1px solid color("light");
+  border-radius: 5px;
 }
 
-.table-scrollable {
-  color: color("light");
-  width: 100%;
-  border: 1px solid color("light");
-  border-radius: 5px;
-  display: block; /* Add this */
-  max-height: 30rem; /* Move height here and use max-height */
-  overflow: hidden; /* Add this */
+.grid-tbody {
+  background-color: transparent !important;
+}
 
-  tbody {
-    display: block; /* Add this */
-    height: 30rem;
-    overflow-y: auto; /* Add this for scrolling */
-  }
+.grid-th {
+  background-color: transparent !important;
+  border-radius: 0;
+}
 
-  thead {
-    display: table-header-group; /* Add this to keep header visible */
-    position: sticky; /* Add this */
-    top: 0; /* Add this */
-    z-index: 10; /* Add this */
-    background-color: color("background"); /* Add background */
-  }
-
-  tr {
-    display: table; /* Add this */
-    width: 100%; /* Add this */
-    table-layout: fixed; /* Add this */
-    border-spacing: 0;
-    text-align: center;
-    height: 5rem;
-    cursor: pointer;
-    border-bottom: 1px solid color("light");
-
-    &:hover {
-      color: color("primary");
-      background-color: color("light");
-    }
-  }
-
-  td,
-  th {
-    border: none; /* Remove cell borders */
-    padding: 0.5rem; /* Add padding for spacing */
-  }
+.gridjs-wrapper {
+  border-radius: 0;
 }
