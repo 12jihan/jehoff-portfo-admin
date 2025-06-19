@@ -3,6 +3,10 @@
 @use "../abstracts/mixins" as *;
 @use "sass:color";
 
+.grid-js-container {
+  width: 100%;
+}
+
 .table-scrollable {
   color: color("light");
   width: 100%;

@@ -35,9 +35,11 @@ function Contacts(): ReactElement {
         columns: ["ID", "Name", "Email", "Date Created", "Date Modified"],
         data: gridData,
         search: false,
-        sort: true,
+        sort: false,
         pagination: false,
+        resizable: true,
         className: {
+          container: "grid-js-container",
           table: "table-scrollable",
           thead: "grid-thead",
           tbody: "grid-tbody",
@@ -99,7 +101,7 @@ function Contacts(): ReactElement {
 
           {isLoading && <div>Loading contacts...</div>}
           {error && <div>Error: {error}</div>}
-          <div ref={tableRef}></div>
+          <div className="grid-js-container" ref={tableRef}></div>
         </div>
       </section>
     </>
