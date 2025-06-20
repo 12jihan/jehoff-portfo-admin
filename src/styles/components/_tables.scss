@@ -88,10 +88,356 @@
       th.sortable:hover {
         background: #f3f4f6;
       }
+      th.checkbox-cell {
+        width: 48px;
+        padding: 0.75rem 0.75rem 0.75rem 1rem;
+      }
     }
 
     &__body {
       text-align: left;
+
+      tr:hover {
+        background: #f8fafc;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      tr.selected {
+        background: #eff6ff;
+        border-color: #bfdbfe;
+      }
+      tr.selected:hover {
+        background: #dbeafe;
+      }
+      tr:last-child {
+        border-bottom: none;
+      }
+      tbody tr:hover .action-buttons {
+        opacity: 1;
+      }
+      .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: transparent;
+      }
+
+      td {
+        padding: 0.75rem 1rem;
+        vertical-align: middle;
+        color: #374151;
+      }
+      td.checkbox-cell {
+        padding: 0.75rem 0.75rem 0.75rem 1rem;
+      }
     }
   }
+
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .contact-name {
+    font-weight: 500;
+    color: #111827;
+    font-size: 0.875rem;
+  }
+
+  .contact-id {
+    font-size: 0.6875rem;
+    color: #6b7280;
+    font-family: "Courier New", monospace;
+  }
+
+  .email-cell a {
+    color: #3b82f6;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .email-cell a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  .date-cell {
+    color: #6b7280;
+    font-size: 0.8125rem;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .status-badge--active {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .status-badge--inactive {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  .status-badge--pending {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .action-btn--edit {
+    color: #3b82f6;
+  }
+
+  .action-btn--edit:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  .action-btn--delete {
+    color: #ef4444;
+  }
+
+  .action-btn--delete:hover {
+    background: #fef2f2;
+    color: #dc2626;
+  }
+
+  .action-btn--more {
+    color: #6b7280;
+  }
+
+  .action-btn--more:hover {
+    background: #f3f4f6;
+    color: #374151;
+  }
+
+  .checkbox-container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    height: 18px;
+    width: 18px;
+    background: white;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .checkbox-container input:checked ~ .checkmark {
+    background: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .checkmark:hover {
+    border-color: #9ca3af;
+  }
+
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.8125rem;
+    flex-shrink: 0;
+  }
+
+  .table-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #6b7280;
+  }
+
+  .selection-info {
+    color: #3b82f6;
+    font-weight: 500;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pagination-btn {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #d1d5db;
+    background: white;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.8125rem;
+  }
+
+  .pagination-btn:hover:not(:disabled) {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+  }
+
+  .pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .pagination-info {
+    color: #6b7280;
+    font-size: 0.8125rem;
+  }
 }
+
+/* Responsive */
+// @media (max-width: 768px) {
+//   .demo-container {
+//     padding: 1rem;
+//   }
+//
+//   .demo-header h1 {
+//     font-size: 2rem;
+//   }
+//
+//   .table-header {
+//     padding: 1rem;
+//     flex-direction: column;
+//     gap: 1rem;
+//     align-items: stretch;
+//   }
+//
+//   .table-actions {
+//     justify-content: center;
+//   }
+//
+//   .modern-table th,
+//   .modern-table td {
+//     padding: 0.75rem 0.75rem;
+//   }
+//
+//   .modern-table th:first-child,
+//   .modern-table td:first-child {
+//     padding-left: 1rem;
+//   }
+//
+//   .modern-table th:last-child,
+//   .modern-table td:last-child {
+//     padding-right: 1rem;
+//   }
+//
+//   .table-footer {
+//     padding: 1rem;
+//     flex-direction: column;
+//     gap: 1rem;
+//     align-items: stretch;
+//   }
+//
+//   .table-info {
+//     justify-content: center;
+//   }
+//
+//   .pagination {
+//     justify-content: center;
+//   }
+// }
+//
+// @media (max-width: 480px) {
+//   .modern-table th:nth-child(5),
+//   .modern-table td:nth-child(5) {
+//     display: none;
+//   }
+//
+//   .contact-info {
+//     flex-direction: column;
+//     align-items: flex-start;
+//     gap: 0.5rem;
+//   }
+//
+//   .avatar {
+//     width: 32px;
+//     height: 32px;
+//     font-size: 0.75rem;
+//   }
+// }
