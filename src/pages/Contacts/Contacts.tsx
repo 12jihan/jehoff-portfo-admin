@@ -6,9 +6,10 @@ import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo"
 import type { Timestamp } from "firebase/firestore";
 import "gridjs/dist/theme/mermaid.css";
 import GridjsTable from "../../components/GridjsTable/GridjsTable";
-import ShadcnTable from "../../components/ShadcnTable/ShadcnTable";
+import CustomTable from "../../components/CustomTable/CustomTable";
 
 function Contacts(): ReactElement {
+  //@ts-ignore
   const { isLoading, error, contacts, getAllContacts } = useContactData();
 
   const tableRef = useRef<HTMLDivElement>(null);
@@ -87,6 +88,7 @@ function Contacts(): ReactElement {
     };
   }, []);
 
+  //@ts-ignore
   function convertTimestamp(timestamp: Timestamp): any {
     const newDate = timestamp.toDate().toLocaleDateString("en-US", {
       year: "numeric",
@@ -100,6 +102,7 @@ function Contacts(): ReactElement {
     return newDate;
   }
 
+  //@ts-ignore
   function clicked(): void {
     console.log("clicked");
   }
@@ -125,7 +128,7 @@ function Contacts(): ReactElement {
           </div>
 
           <GridjsTable />
-          {/* <ShadcnTable /> */}
+          <CustomTable />
         </div>
       </section>
     </>

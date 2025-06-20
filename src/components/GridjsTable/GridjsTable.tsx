@@ -86,6 +86,7 @@ function GridjsTable(): ReactElement {
     };
   }, []);
 
+  //@ts-ignore
   function convertTimestamp(timestamp: Timestamp): any {
     const newDate = timestamp.toDate().toLocaleDateString("en-US", {
       year: "numeric",
