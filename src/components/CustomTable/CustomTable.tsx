@@ -1,8 +1,16 @@
-import type { ReactElement } from "react";
+import { useEffect, type ReactElement } from "react";
+import { useContactData } from "../../customHooks/ContactData";
 
 function CustomTable(): ReactElement {
+  const { isLoading, error, contacts, getAllContacts } = useContactData();
+  useEffect(() => {
+    getAllContacts();
+  }, []);
+
   return (
     <>
+      {isLoading && <div>Loading contacts...</div>}
+      {error && <div>Error: {error}</div>}
       <div className="blink-table-container">
         <div className="blink-table__header">
           <h3>Contacts</h3>
@@ -17,60 +25,28 @@ function CustomTable(): ReactElement {
               <tr>
                 <th>X</th>
                 <th className="sortable">Test</th>
-                <th className="sortable">Test</th>
                 <th>Test</th>
                 <th>Test</th>
+                <th>Test</th>
+                <th></th>
               </tr>
             </thead>
             <tbody className="blink-table__body">
-              <tr>
-                <td>X</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-              </tr>
-              <tr>
-                <td>X</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-              </tr>
-              <tr>
-                <td>X</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-              </tr>
-              <tr>
-                <td>X</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-              </tr>
-              <tr>
-                <td>X</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-              </tr>
-              <tr>
-                <td>X</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-                <td>Test</td>
-              </tr>
+              {contacts.map((item: any, index: number): any => (
+                <tr>
+                  <td>X</td>
+                  <td>Test</td>
+                  <td>Test</td>
+                  <td>Test</td>
+                  <td>Test</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
         <div className="blink-table__footer">
           <p>
-            Showing <b>16</b> users
+            Showing <b>{contacts.length}</b> contacts
           </p>
         </div>
       </div>
