@@ -5,7 +5,7 @@ import { Grid } from "gridjs";
 import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
 import type { Timestamp } from "firebase/firestore";
 import "gridjs/dist/theme/mermaid.css";
-import GridjsTable from "../../components/GridjsTable/GridjsTable";
+// import GridjsTable from "../../components/GridjsTable/GridjsTable";
 import CustomTable from "../../components/CustomTable/CustomTable";
 
 function Contacts(): ReactElement {
@@ -127,7 +127,7 @@ function Contacts(): ReactElement {
             </button>
           </div>
 
-          <GridjsTable />
+          {/* <GridjsTable /> */}
           <CustomTable />
         </div>
       </section>

@@ -36,7 +36,8 @@
 }
 
 .blink-table-container {
-  background: #ffffff;
+  background: transparent;
+  border: 1px solid color("light");
   border-radius: 12px;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -139,6 +140,23 @@
     }
   }
 
+  .cell-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      border: none;
+      border-radius: 50%;
+      background-color: transparent;
+      transition: all 250ms ease-in-out;
+      padding: 0.5rem;
+      &:hover {
+        background-color: red;
+        color: pink;
+      }
+    }
+  }
   .contact-info {
     display: flex;
     align-items: center;

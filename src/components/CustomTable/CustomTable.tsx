@@ -1,6 +1,14 @@
 import { useEffect, type ReactElement } from "react";
 import { useContactData } from "../../customHooks/ContactData";
 import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
+import {
+  HeartPlusIcon,
+  IceCreamConeIcon,
+  MessageSquareDashedIcon,
+  PlusIcon,
+  SearchIcon,
+  Trash2Icon,
+} from "lucide-react";
 
 function CustomTable(): ReactElement {
   const { isLoading, error, contacts, getAllContacts } = useContactData();
@@ -8,10 +16,26 @@ function CustomTable(): ReactElement {
     getAllContacts();
   }, []);
 
+  //@ts-ignore
+  function convertTimestamp(timestamp: Timestamp): any {
+    const newDate = timestamp.toDate().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    return newDate;
+  }
+
   return (
     <>
       {isLoading && <div>Loading contacts...</div>}
+
       {error && <div>Error: {error}</div>}
+
       <div className="blink-table-container">
         <div className="blink-table__header">
           <h3>Contacts</h3>
@@ -33,17 +57,25 @@ function CustomTable(): ReactElement {
               </tr>
             </thead>
             <tbody className="blink-table__body">
-              {contacts.map((item: IContactData, index: number): any => (
-                <tr>
-                  <td>X</td>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>Test</td>
-                  <td>{item.canContact ? "yes" : "no"}</td>
-                  <td>
-                    <button>swift</button>
-                    <button>swift</button>
-                    <button>swift</button>
+              {contacts.map((item: IContactData): any => (
+                <tr className="blink-row" key={item.id}>
+                  <td className="blink-cells">X</td>
+                  <td className="blink-cells">{item.name}</td>
+                  <td className="blink-cells">{item.email}</td>
+                  <td className="blink-cells">
+                    {convertTimestamp(item.dateCreated)}
+                  </td>
+                  <td className="blink-cells">{item.contact ? "yes" : "no"}</td>
+                  <td className="blink-cells cell-btns">
+                    <button className="fav-btn">
+                      <HeartPlusIcon />
+                    </button>
+                    <button className="read-btn">
+                      <SearchIcon />
+                    </button>
+                    <button className="delete-btn">
+                      <Trash2Icon />
+                    </button>
                   </td>
                 </tr>
               ))}
