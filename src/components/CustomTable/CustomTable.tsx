@@ -1,5 +1,6 @@
 import { useEffect, type ReactElement } from "react";
 import { useContactData } from "../../customHooks/ContactData";
+import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
 
 function CustomTable(): ReactElement {
   const { isLoading, error, contacts, getAllContacts } = useContactData();
@@ -24,21 +25,26 @@ function CustomTable(): ReactElement {
             <thead className="blink-table__head">
               <tr>
                 <th>X</th>
-                <th className="sortable">Test</th>
-                <th>Test</th>
-                <th>Test</th>
-                <th>Test</th>
+                <th className="sortable">Name</th>
+                <th>Email</th>
+                <th>Created</th>
+                <th>Contact</th>
                 <th></th>
               </tr>
             </thead>
             <tbody className="blink-table__body">
-              {contacts.map((item: any, index: number): any => (
+              {contacts.map((item: IContactData, index: number): any => (
                 <tr>
                   <td>X</td>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
                   <td>Test</td>
-                  <td>Test</td>
-                  <td>Test</td>
-                  <td>Test</td>
+                  <td>{item.canContact ? "yes" : "no"}</td>
+                  <td>
+                    <button>swift</button>
+                    <button>swift</button>
+                    <button>swift</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
