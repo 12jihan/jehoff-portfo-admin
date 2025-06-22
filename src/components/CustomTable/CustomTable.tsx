@@ -39,10 +39,10 @@ function CustomTable(): ReactElement {
       <div className="blink-table-container">
         <div className="blink-table__header">
           <h3>Contacts</h3>
-          <div className="btn__group">
-            <button className="btn">Add Contact</button>
-            <button className="btn">Export</button>
-          </div>
+          {/* <div className="btn__group"> */}
+          {/*   <button className="btn">Add Contact</button> */}
+          {/*   <button className="btn">Export</button> */}
+          {/* </div> */}
         </div>
         <div className="blink-table__wrapper">
           <table className="blink-table">
