@@ -38,7 +38,7 @@
 .blink-table-container {
   background: transparent;
   border: 1px solid color("light");
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -131,6 +131,12 @@
           color: color("primary");
         }
 
+        td.checkbox-cell {
+          button {
+            color: color("primary");
+          }
+        }
+
         .cell-btns {
           button {
             color: color("primary");
@@ -175,6 +181,11 @@
       }
       td.checkbox-cell {
         padding: 0.75rem 0.75rem 0.75rem 1rem;
+        button {
+          color: color("light");
+          background-color: transparent;
+          border: none;
+        }
       }
     }
   }
@@ -189,12 +200,8 @@
       border: none;
       border-radius: 50%;
       background-color: transparent;
-      transition: all 250ms ease-in-out;
       padding: 0.5rem;
-      &:hover {
-        background-color: color("primary");
-        color: white;
-      }
+      transition: all 250ms ease-in-out;
     }
   }
   .contact-info {

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import SideNav from "./components/SideNav/SideNav";
 import Contacts from "./pages/Contacts/Contacts";
+import Blog from "./pages/Blog/Blog";
 
 const routes = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const routes = createBrowserRouter([
       {
         path: "/contacts",
         element: <Contacts />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },

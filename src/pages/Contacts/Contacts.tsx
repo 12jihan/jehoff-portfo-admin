@@ -112,19 +112,63 @@ function Contacts(): ReactElement {
       <section className="container">
         <h2 className="section-header-center">Contacts</h2>
         <div className="section-body-center">
-          <div className="selector btn__group">
-            <button className="btn btn--light-outline" type="button">
-              View All
-            </button>
-            <button className="btn btn--light-outline" type="button">
-              Unread
-            </button>
-            <button className="btn btn--light-outline" type="button">
-              Recently Updated
-            </button>
-            <button className="btn btn--light-outline" type="button">
-              Archived
-            </button>
+          <div className="card-group-h">
+            <div className="data-card">
+              <div className="card-header">
+                <p>Total Submissions</p>
+              </div>
+              <div className="card-body">
+                <p>6</p>
+              </div>
+            </div>
+            <div className="data-card">
+              <div className="card-header">
+                <p>New Submissions</p>
+              </div>
+              <div className="card-body">
+                <p className="lime">2</p>
+              </div>
+            </div>
+            <div className="data-card">
+              <div className="card-header">
+                <p>Total Submission</p>
+              </div>
+              <div className="card-body">
+                <p>6</p>
+              </div>
+            </div>
+            <div className="data-card">
+              <div className="card-header">
+                <p>Total Submission</p>
+              </div>
+              <div className="card-body">
+                <p>6</p>
+              </div>
+            </div>
+          </div>
+          <div className="selector-left-right">
+            {/* <div className="form"> */}
+            {/* </div> */}
+            <input
+              id="contact-search"
+              type="text"
+              className="form__input"
+              placeholder="Search Contact"
+            />
+            <div className=" btn__group">
+              <button className="btn btn--light-outline" type="button">
+                View All
+              </button>
+              <button className="btn btn--light-outline" type="button">
+                Unread
+              </button>
+              <button className="btn btn--light-outline" type="button">
+                Recently Updated
+              </button>
+              <button className="btn btn--light-outline" type="button">
+                Archived
+              </button>
+            </div>
           </div>
 
           {/* <GridjsTable /> */}

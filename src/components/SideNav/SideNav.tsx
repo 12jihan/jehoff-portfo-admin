@@ -12,7 +12,7 @@ function SideNav(): ReactElement {
           <NavLink className="side-nav__item" to="/contacts">
             Contacts
           </NavLink>
-          <NavLink className="side-nav__item" to="/">
+          <NavLink className="side-nav__item" to="/blog">
             Blog
           </NavLink>
           <NavLink className="side-nav__item" to="/">

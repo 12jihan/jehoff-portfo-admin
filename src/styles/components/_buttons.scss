@@ -5,6 +5,7 @@
 
 button {
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn__group {
@@ -124,6 +125,36 @@ button {
     &:hover {
       color: black;
       background-color: color("light");
+    }
+  }
+}
+
+.btn-long {
+  background-color: transparent;
+  color: color("light");
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  border: 1px solid color("light");
+  border-radius: 4rem;
+  min-width: 18rem;
+  padding: 0.5rem;
+  transition: all 250ms ease-in-out;
+
+  .icon {
+    // color: color("light");
+    display: flex;
+    flex-direction: column;
+    border: 1px solid color("light");
+    border-radius: 100%;
+    transition: all 250ms ease-in-out;
+  }
+
+  &:hover {
+    color: color("primary");
+    background-color: color("white");
+    .icon {
+      border: 1px solid color("primary");
     }
   }
 }

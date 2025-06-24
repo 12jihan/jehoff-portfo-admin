@@ -2,6 +2,7 @@ import { useEffect, type ReactElement } from "react";
 import { useContactData } from "../../customHooks/ContactData";
 import type { IContactData } from "../../interfaces/ContactForm/IUseContactInfo";
 import {
+  CircleDot,
   HeartPlusIcon,
   IceCreamConeIcon,
   MessageSquareDashedIcon,
@@ -48,7 +49,7 @@ function CustomTable(): ReactElement {
           <table className="blink-table">
             <thead className="blink-table__head">
               <tr>
-                <th>X</th>
+                <th>Select</th>
                 <th className="sortable">Name</th>
                 <th>Email</th>
                 <th>Created</th>
@@ -59,7 +60,11 @@ function CustomTable(): ReactElement {
             <tbody className="blink-table__body">
               {contacts.map((item: IContactData): any => (
                 <tr className="blink-row" key={item.id}>
-                  <td className="blink-cells">X</td>
+                  <td className="blink-cells checkbox-cell">
+                    <button>
+                      <CircleDot />
+                    </button>
+                  </td>
                   <td className="blink-cells">{item.name}</td>
                   <td className="blink-cells">{item.email}</td>
                   <td className="blink-cells">

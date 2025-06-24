@@ -7,10 +7,22 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: spacing("5");
+  width: 100%;
   padding: spacing("5");
   border: 1px solid color("light");
   border-radius: 5px;
+}
+
+.selector-left-right {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: spacing("5");
+  border: 1px solid color("light");
+  border-radius: 5px;
+  width: 100%;
 }
