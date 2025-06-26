@@ -1,6 +1,6 @@
 import { EyeIcon, PencilIcon, PlusIcon, SearchIcon } from "lucide-react";
 import "./Blog.scss";
-import type { ReactElement } from "react";
+import { useRef, type ReactElement } from "react";
 
 /**
  * Displays a placeholder section for the blog page with a heading indicating that content is forthcoming.
@@ -112,10 +112,11 @@ function Blog(): ReactElement {
       // action: insertCodeBlock
     },
   ];
+  const editorRef = useRef<HTMLDivElement>(null);
 
   return (
     <section className="container">
-      <h2 className="section-header-center">Blog</h2>
+      <h2 className="section-header-center">Blog </h2>
       <div className="section-body-center">
         <div className="blog-container">
           <div className="blog-settings">
@@ -246,7 +247,29 @@ function Blog(): ReactElement {
                 </div>
               </div>
               <div className="editor-text">
-                <textarea placeholder="Start writing your blog post in Markdown..." />
+                <div
+                  ref={editorRef}
+                  className="editor"
+                  contentEditable={true}
+                  suppressContentEditableWarning={true}
+                  // onInput={handleEditorInput}
+                  // onFocus={handleEditorFocus}
+                  // onBlur={handleEditorBlur}
+                ></div>
+                {/* <textarea */}
+                {/*   placeholder="Start writing your blog post in Markdown..." */}
+                {/*   style={{ */}
+                {/*     flex: 1, */}
+                {/*     padding: "2rem", */}
+                {/*     border: "none", */}
+                {/*     outline: "none", */}
+                {/*     fontSize: "1rem", */}
+                {/*     lineHeight: "1.6", */}
+                {/*     fontFamily: '"JetBrains Mono", "Courier New", monospace', */}
+                {/*     resize: "none", */}
+                {/*     background: "white", */}
+                {/*   }} */}
+                {/* /> */}
               </div>
             </div>
           </div>
