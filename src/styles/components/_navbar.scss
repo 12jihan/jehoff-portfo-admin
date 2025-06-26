@@ -78,9 +78,9 @@
 }
 
 .side-nav {
-  position: relative;
+  position: fixed;
   // height: calc(100vh - 7rem);
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

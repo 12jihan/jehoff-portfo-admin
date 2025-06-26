@@ -115,7 +115,7 @@ function Blog(): ReactElement {
 
   return (
     <section className="container">
-      <h2 className="section-header-center">Coming Soon...</h2>
+      <h2 className="section-header-center">Blog</h2>
       <div className="section-body-center">
         <div className="blog-container">
           <div className="blog-settings">
@@ -246,20 +246,7 @@ function Blog(): ReactElement {
                 </div>
               </div>
               <div className="editor-text">
-                <textarea
-                  placeholder="Start writing your blog post in Markdown..."
-                  style={{
-                    flex: 1,
-                    padding: "2rem",
-                    border: "none",
-                    outline: "none",
-                    fontSize: "1rem",
-                    lineHeight: "1.6",
-                    fontFamily: '"JetBrains Mono", "Courier New", monospace',
-                    resize: "none",
-                    background: "white",
-                  }}
-                />
+                <textarea placeholder="Start writing your blog post in Markdown..." />
               </div>
             </div>
           </div>
