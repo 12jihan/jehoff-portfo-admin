@@ -35,7 +35,7 @@
 
 // Container
 @mixin container {
-  height: auto;
+  height: 100%;
   width: 100%;
   max-width: $container-max-width;
   padding-inline: map.get($spacing, "4");

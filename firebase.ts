@@ -1,11 +1,7 @@
-import {
-  type FirebaseApp,
-  type FirebaseOptions,
-  initializeApp,
-} from "firebase/app";
+import { FirebaseOptions, initializeApp } from "firebase/app";
+// import { getAuth } from "firebase/auth";
 // import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
 
 // Firebase configuration
 const firebaseConfig: FirebaseOptions = {
@@ -21,12 +17,8 @@ const firebaseConfig: FirebaseOptions = {
 const app = initializeApp(firebaseConfig);
 
 // Init Firebase serivces
+// export const auth = getAuth(app);
 // export const storage = getStorage(app);
 export const db = getFirestore(app);
-export const auth = getAuth(app);
-export const analytics = getAnalytics(app);
 
 export default app;
-function getAuth(app: FirebaseApp) {
-  throw new Error("Function not implemented.");
-}
